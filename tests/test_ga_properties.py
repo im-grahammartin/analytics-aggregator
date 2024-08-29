@@ -16,7 +16,7 @@ def ga_properties():
 
 def test_get_ga_properties(ga_properties):
     # Arrange - set up input and expected output
-    expected_length = 2
+    expected_length = 1
     expected_name = 'Test GA Property Name'
     expected_id = '123456789'
     expected_type = list
@@ -27,5 +27,5 @@ def test_get_ga_properties(ga_properties):
     # Assert
     assert type(ga_data) == expected_type
     assert len(ga_data) == expected_length
-    assert ga_data[1][0] == expected_name
-    assert ga_data[1][1] == expected_id
+    assert ga_data[0]['name'] == expected_name
+    assert ga_data[0]['property_id'] == expected_id
