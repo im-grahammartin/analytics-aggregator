@@ -4,12 +4,10 @@ def aggregate_reports(data):
 
     for row in data:
         for result in row['results']:
-            # print(result)
             aggregate_key = ''
 
             if('dimensions' in result):
                 for key in result['dimensions']:
-                    # print(key)
                     aggregate_key+= result['dimensions'][key] + '|'
 
                 aggregate_key = aggregate_key[:-1]
