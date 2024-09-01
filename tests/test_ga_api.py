@@ -1,4 +1,4 @@
-from helpers.ga_api import build_metrics, build_dimensions, build_report_request
+from helpers.ga_api import build_metrics, build_dimensions, build_report_request, generate_ga_report
 from unittest.mock import patch, call
 
 def test_build_metrics_single():
@@ -164,3 +164,30 @@ def test_build_report_request_with_dimensions():
                     assert report == expected_response
                     mock_report_request.assert_called_once()
                     assert mock_report_request.call_args == expected_call
+
+def test_generate_ga_report():
+    with patch("helpers.ga_api.BetaAnalyticsDataClient") as mock_beta_analytics_data_client:
+        with patch("helpers.ga_api.BetaAnalyticsDataClient.run_report") as mock_run_report:
+        
+            # Arrange - set up input and expected output
+            expected_type = list
+            expected_length = 0
+            expected_response = []
+            expected_call = []
+            
+            # Act
+            report = generate_ga_report(
+                property_id='123456',
+                start_date='10daysAgo',
+                end_date='yesterday',
+                metrics='screenPageViews',
+                dimensions='platform',
+            )
+
+            # Assert
+            mock_beta_analytics_data_client.assert_called_once()
+            mock_beta_analytics_data_client().run_report.assert_called_once()
+            assert mock_beta_analytics_data_client.call_args == expected_call
+            assert type(report) == expected_type
+            assert len(report) == expected_length
+            assert report == expected_response
