@@ -16,7 +16,7 @@ def test_save_results():
     }
 
     current_date = datetime.today().strftime('%d-%m-%Y')
-    file_name = "exports/analytics-aggregator-" + current_date + ".json"
+    file_name = 'exports/analytics-aggregator-' + current_date + '.json'
 
     # Act
     save_results(results)
@@ -42,17 +42,17 @@ def test_save_results_custom_name():
         }
     }
 
-    file_name = "test-file-name"
+    file_name = 'test-file-name'
 
     # Act
-    save_results(results, "test-file-name")
+    save_results(results, 'test-file-name')
 
     # Assert
-    with open("exports/" + file_name + ".json", 'r') as file:
+    with open('exports/' + file_name + '.json', 'r') as file:
         saved_data = json.load(file)
 
     assert type(saved_data) == dict
     assert len(saved_data) == 2
     assert saved_data == results
 
-    os.remove("exports/" + file_name + ".json")
+    os.remove('exports/' + file_name + '.json')

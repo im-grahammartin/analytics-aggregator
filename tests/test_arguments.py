@@ -1,7 +1,7 @@
 from helpers.arguments import get_arguments
 from unittest.mock import patch
 
-@patch("argparse.ArgumentParser")
+@patch('argparse.ArgumentParser')
 def test_get_arguments(self):
     # Arrange - set up input and expected output
     expected_type = dict
