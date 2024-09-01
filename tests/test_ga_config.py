@@ -4,7 +4,7 @@ import csv
 
 from helpers.ga_config import get_ga_properties
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope='module')
 def ga_properties():
     with open('ga-properties.csv', 'w', newline='') as ga_properties:
         fieldnames = ['name', 'property_id']

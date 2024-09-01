@@ -1,5 +1,3 @@
-import pytest
-
 from helpers.aggregator import aggregate_reports
 
 # Combine two lists with properties in the same order
