@@ -65,6 +65,4 @@ def generate_ga_report(property_id, start_date, end_date, metrics, dimensions=No
     # Clean the response to suit our needs
     clean_response = clean_ga_response(response)
 
-    print(clean_response)
-
     return clean_response
