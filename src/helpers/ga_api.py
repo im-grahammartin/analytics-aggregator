@@ -1,6 +1,8 @@
 from google.analytics.data_v1beta.types import (
+    DateRange,
     Dimension,
     Metric,
+    RunReportRequest,
 )
 
 def build_metrics(metrics_str):
@@ -20,3 +22,12 @@ def build_dimensions(dimensions_str):
             dimensions.append(Dimension(name=dimension.strip()))
     
     return dimensions
+
+def build_report_request(property_id, start_date, end_date, metrics_str, dimensions_str=None):
+    return RunReportRequest(
+        property=f'properties/{property_id}',
+        metrics=build_metrics(metrics_str),
+        dimensions=build_dimensions(dimensions_str),
+        date_ranges=[DateRange(start_date=start_date, end_date=end_date)],
+    )
+
