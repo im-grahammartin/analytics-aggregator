@@ -1,5 +1,3 @@
-import pytest
-
 from helpers.ga_api import build_metrics, build_dimensions
 from unittest.mock import patch, call
 

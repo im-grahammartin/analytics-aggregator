@@ -1,5 +1,3 @@
-import pytest
-
 from helpers.arguments import get_arguments
 from unittest.mock import patch
 
