@@ -1,10 +1,10 @@
 import sys
 
-from helpers.arguments import get_arguments
-from helpers.ga_config import get_ga_properties
-from helpers.ga_api import generate_ga_report
-from helpers.aggregator import aggregate_reports
-from helpers.save_results import save_results
+from interface.cli_arguments import get_arguments
+from file.ga_config import get_ga_properties
+from api.ga import generate_ga_report
+from transformers.aggregator import aggregate_reports
+from file.save_results import save_results
 
 def main():
     

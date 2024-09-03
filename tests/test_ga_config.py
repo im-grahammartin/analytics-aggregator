@@ -2,7 +2,7 @@ import pytest
 import os
 import csv
 
-from helpers.ga_config import get_ga_properties
+from file.ga_config import get_ga_properties
 
 @pytest.fixture(scope='module')
 def ga_properties():

@@ -1,4 +1,4 @@
-from helpers.arguments import get_arguments
+from interface.cli_arguments import get_arguments
 from unittest.mock import patch
 
 @patch('argparse.ArgumentParser')

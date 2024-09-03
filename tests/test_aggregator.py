@@ -1,4 +1,4 @@
-from helpers.aggregator import aggregate_reports
+from transformers.aggregator import aggregate_reports
 
 # Combine two lists with properties in the same order
 def test_aggregator_simple():

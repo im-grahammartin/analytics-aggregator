@@ -1,9 +1,9 @@
 from unittest.mock import patch, call, Mock
-from helpers.ga_api import build_metrics, build_dimensions, build_report_request, generate_ga_report, clean_ga_response
+from api.ga import build_metrics, build_dimensions, build_report_request, generate_ga_report, clean_ga_response
 
 
 def test_build_metrics_single():
-    with patch('helpers.ga_api.Metric', return_value='test') as mock_metrics:
+    with patch('api.ga.Metric', return_value='test') as mock_metrics:
         # Arrange - set up input and expected output
         expected_type = list
         expected_length = 1 
@@ -20,7 +20,7 @@ def test_build_metrics_single():
         mock_metrics.assert_called_once_with(name='one')
 
 def test_build_metrics_multiple():
-    with patch('helpers.ga_api.Metric', return_value='test') as mock_metrics:
+    with patch('api.ga.Metric', return_value='test') as mock_metrics:
         # Arrange - set up input and expected output
         expected_type = list
         expected_length = 2 
@@ -38,7 +38,7 @@ def test_build_metrics_multiple():
         mock_metrics.assert_has_calls([call(name='one'), call(name='two')])
 
 def test_build_metrics_multiple_with_whitespace():
-    with patch('helpers.ga_api.Metric', return_value='test') as mock_metrics:
+    with patch('api.ga.Metric', return_value='test') as mock_metrics:
         # Arrange - set up input and expected output
         expected_type = list
         expected_length = 2 
@@ -56,7 +56,7 @@ def test_build_metrics_multiple_with_whitespace():
         mock_metrics.assert_has_calls([call(name='one'), call(name='two')])
 
 def test_build_dimensions_single():
-    with patch('helpers.ga_api.Dimension', return_value='test') as mock_dimensions:
+    with patch('api.ga.Dimension', return_value='test') as mock_dimensions:
         # Arrange - set up input and expected output
         expected_type = list
         expected_length = 1 
@@ -73,7 +73,7 @@ def test_build_dimensions_single():
         mock_dimensions.assert_called_once_with(name='one')
 
 def test_build_dimensions_multiple():
-    with patch('helpers.ga_api.Dimension', return_value='test') as mock_dimensions:
+    with patch('api.ga.Dimension', return_value='test') as mock_dimensions:
         # Arrange - set up input and expected output
         expected_type = list
         expected_length = 2 
@@ -91,7 +91,7 @@ def test_build_dimensions_multiple():
         mock_dimensions.assert_has_calls([call(name='one'), call(name='two')])
 
 def test_build_dimensions_multiple_with_whitespace():
-    with patch('helpers.ga_api.Dimension', return_value='test') as mock_dimensions:
+    with patch('api.ga.Dimension', return_value='test') as mock_dimensions:
         # Arrange - set up input and expected output
         expected_type = list
         expected_length = 2 
@@ -109,9 +109,9 @@ def test_build_dimensions_multiple_with_whitespace():
         mock_dimensions.assert_has_calls([call(name='one'), call(name='two')])
 
 def test_build_report_request():
-    with patch('helpers.ga_api.RunReportRequest', return_value=True) as mock_report_request:
-        with patch('helpers.ga_api.Metric', return_value='test-metric'):
-            with patch('helpers.ga_api.DateRange', return_value='test-dates'):
+    with patch('api.ga.RunReportRequest', return_value=True) as mock_report_request:
+        with patch('api.ga.Metric', return_value='test-metric'):
+            with patch('api.ga.DateRange', return_value='test-dates'):
                 # Arrange - set up input and expected output
                 expected_type = bool
                 expected_response = True
@@ -137,10 +137,10 @@ def test_build_report_request():
                 assert mock_report_request.call_args == expected_call
 
 def test_build_report_request_with_dimensions():
-    with patch('helpers.ga_api.RunReportRequest', return_value=True) as mock_report_request:
-        with patch('helpers.ga_api.Metric', return_value='test-metric'):
-            with patch('helpers.ga_api.Dimension', return_value='test-dimension'):
-                with patch('helpers.ga_api.DateRange', return_value='test-dates'):
+    with patch('api.ga.RunReportRequest', return_value=True) as mock_report_request:
+        with patch('api.ga.Metric', return_value='test-metric'):
+            with patch('api.ga.Dimension', return_value='test-dimension'):
+                with patch('api.ga.DateRange', return_value='test-dates'):
                     # Arrange - set up input and expected output
                     expected_type = bool
                     expected_response = True
@@ -167,8 +167,8 @@ def test_build_report_request_with_dimensions():
                     assert mock_report_request.call_args == expected_call
 
 def test_generate_ga_report():
-    with patch('helpers.ga_api.BetaAnalyticsDataClient') as mock_beta_analytics_data_client:
-        with patch('helpers.ga_api.BetaAnalyticsDataClient.run_report') as mock_run_report:
+    with patch('api.ga.BetaAnalyticsDataClient') as mock_beta_analytics_data_client:
+        with patch('api.ga.BetaAnalyticsDataClient.run_report') as mock_run_report:
         
             # Arrange - set up input and expected output
             expected_type = list
