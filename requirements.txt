@@ -3,7 +3,7 @@ certifi==2024.7.4
 charset-normalizer==3.3.2
 coverage==7.6.3
 exceptiongroup==1.2.2
-google-analytics-data==0.18.11
+google-analytics-data==0.18.12
 google-api-core==2.19.2
 google-auth==2.34.0
 googleapis-common-protos==1.65.0
