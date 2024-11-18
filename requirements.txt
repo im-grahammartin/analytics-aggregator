@@ -7,7 +7,7 @@ google-analytics-data==0.18.11
 google-api-core==2.19.2
 google-auth==2.34.0
 googleapis-common-protos==1.65.0
-grpcio==1.66.0
+grpcio==1.68.0
 grpcio-status==1.66.0
 idna==3.8
 iniconfig==2.0.0
